@@ -1,0 +1,85 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+trigger:
+- master
+
+pool:
+  name: Hosted Windows 2019 with VS2019
+
+variables:
+  - group: Environment
+  - name: Version
+    value: '1.0.$(Build.BuildId)'
+  - name: Major
+    value: '1'
+  - name: Minor
+    value: '0'
+  - name: Patch
+    value: '$(Build.BuildId)'
+
+steps:
+- task: UseDotNet@2
+  name: dotnetInstall
+  displayName: "Installs dotnet core sdk"
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.100-preview7-012821'
+    includePreviewVersions: true
+
+- task: DotNetCoreCLI@2
+  name: dotnetRestore
+  displayName: "Restore nugets"
+  inputs:
+    command: 'restore'
+    verbosityRestore: 'Normal'
+    feedRestore: 'MSolve-Nugets'
+
+
+- task: DotNetCoreCLI@2
+  name: dotnetBuild
+  displayName: "Build projects"
+  inputs:
+    command: 'build'
+    arguments: '-p:Version=$(Major).$(Minor).$(Build.BuildId) --no-restore'
+    verbosityPack: 'Minimal'
+    configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  name: dotnetPack
+  displayName: "Packages new nugets"
+  inputs:
+    command: 'pack'
+    projects: 'src/MGroup.*/*.csproj !**\*.Tests.*.csproj'
+    arguments: '--no-restore'
+    includeNuGetOrg: true
+    feedsToUse: 'config'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'Version'
+    verbosityPack: 'Minimal'
+
+- task: PublishBuildArtifacts@1
+  name: publishToFeed
+  displayName: "Publishes to pipeline artifacts"
+  inputs:
+    ArtifactName: 'drop'
+
+- task: DotNetCoreCLI@2
+  name: dotnetPushNuget
+  displayName: "Push nugets to feed"
+  inputs:
+    command: 'push'
+    packagesToPush: '$(build.artifactStagingDirectory)/*.nupkg'
+    verbosityPack: 'Minimal'
+    feedPublish: 'MSolve-Nugets'
+
+- task: DotNetCoreCLI@2
+  enabled: false
+  name: dotnetPushSymbol
+  displayName: "Publishes symbol nugets"
+  inputs:
+    command: 'push'
+    searchPatternPush: '$(Build.ArtifactStagingDirectory)/*.snupkg'
+    feedPublish: 'MSolve-Nugets'
