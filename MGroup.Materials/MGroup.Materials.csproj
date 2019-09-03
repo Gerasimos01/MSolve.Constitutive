@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MGroup.LinearAlgebra" Version="1.0.66" />
+    <PackageReference Include="MGroup.LinearAlgebra" Version="1.0.88" />
   </ItemGroup>
 
 </Project>
