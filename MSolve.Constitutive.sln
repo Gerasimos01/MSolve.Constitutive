@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGroup.Materials", "MGroup.Materials\MGroup.Materials.csproj", "{07A12322-9A4C-4F86-A397-C1E6CD9A2FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGroup.Materials", "MGroup.Materials\MGroup.Materials.csproj", "{07A12322-9A4C-4F86-A397-C1E6CD9A2FC0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{605A2168-9218-4992-92C3-F59D9D268834}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGroup.Problems", "MGroup.Problems\MGroup.Problems.csproj", "{2576BF8A-7F63-47DE-B442-5E1536C64211}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGroup.Problems", "MGroup.Problems\MGroup.Problems.csproj", "{2576BF8A-7F63-47DE-B442-5E1536C64211}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AFAC1FF2-E1FB-4D6A-BA47-1711C0CD91FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGroup.Multiscale", "MGroup.Multiscale\MGroup.Multiscale.csproj", "{DFCE8595-6BD3-447A-A94B-A67E797C8FCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGroup.Multiscale.Tests", "MGroup.Multiscale.Tests\MGroup.Multiscale.Tests.csproj", "{FF55B1A2-525E-4C86-9F83-645E477CF5E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,14 @@ Global
 		{2576BF8A-7F63-47DE-B442-5E1536C64211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2576BF8A-7F63-47DE-B442-5E1536C64211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2576BF8A-7F63-47DE-B442-5E1536C64211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFCE8595-6BD3-447A-A94B-A67E797C8FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCE8595-6BD3-447A-A94B-A67E797C8FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFCE8595-6BD3-447A-A94B-A67E797C8FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFCE8595-6BD3-447A-A94B-A67E797C8FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF55B1A2-525E-4C86-9F83-645E477CF5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF55B1A2-525E-4C86-9F83-645E477CF5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF55B1A2-525E-4C86-9F83-645E477CF5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF55B1A2-525E-4C86-9F83-645E477CF5E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{07A12322-9A4C-4F86-A397-C1E6CD9A2FC0} = {605A2168-9218-4992-92C3-F59D9D268834}
 		{2576BF8A-7F63-47DE-B442-5E1536C64211} = {605A2168-9218-4992-92C3-F59D9D268834}
+		{DFCE8595-6BD3-447A-A94B-A67E797C8FCE} = {605A2168-9218-4992-92C3-F59D9D268834}
+		{FF55B1A2-525E-4C86-9F83-645E477CF5E4} = {AFAC1FF2-E1FB-4D6A-BA47-1711C0CD91FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA335BA1-EE20-45AD-AE66-B0408B577C10}
